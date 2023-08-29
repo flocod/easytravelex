@@ -200,6 +200,11 @@ font-family:var(--font1);
 font-size: 2rem;
 font-weight: 500;
 margin: 0;
+
+@media all and (max-width:1000px){
+  font-size: 1.5em;
+}
+
 }
 h4[text="bold"]{
 font-family:var(--font1);
@@ -220,6 +225,9 @@ h1{
 
   @media all and (max-width:1000px){
     font-size: 8vw;
+  }
+  @media all and (max-width:600px){
+    font-size: 11vw;
   }
 
 }

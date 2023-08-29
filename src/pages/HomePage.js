@@ -169,36 +169,7 @@ const HomePage = () => {
         </div>
       </header>
 
-      <nav className={`mobil_nav ${isActive ? "mobil_nav_active" : ""}`}>
-        <ul>
-          {navItems.map((item, index) => (
-            <li key={index}>
-              <span className={`link ${index === 0 ? "active" : ""}`}>
-                <span className="value">{item}</span>
-                <span className="design">
-                  <div className="carret"></div>
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
 
-        <div className="menu_social">
-          {/* <Boutons text="Apply now" isIcon={true}></Boutons> */}
-
-          <div className="social_link_container">
-            <span>
-              <img src={facebook} alt={facebook} />
-            </span>
-            <span>
-              <img src={twitter} alt={twitter} />
-            </span>
-            <span>
-              <img src={linkedin} alt={linkedin} />
-            </span>
-          </div>
-        </div>
-      </nav>
 
       <section className="section caroussel">
         <div className="images">
@@ -362,76 +333,40 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="phone">
-        <div className="struct">
-          <div className="contain_card card_section_mobile">
-            {/* decoration svg */}
-            <img
-              className="imgImgAfter decoration"
-              src={imgImgAfter}
-              alt="imgImgAfter"
-            />
-            <img
-              className="imgDocumentAfter decoration"
-              src={imgDocumentAfter}
-              alt="imgDocumentAfter"
-            />
-            <img
-              className="imgBagAfter decoration"
-              src={imgBagAfter}
-              alt="imgBagAfter"
-            />
-            {/* decoration svg */}
 
-            <img className="imgTrouSVG" src={imgTrouSVG} alt="svg" />
-            <div className="contain_card_text">
-              <div className="contain_card_text__struct">
-                <h4 className="revelElm" text="bold">
-                  Get your visa in few steps now !
-                </h4>
-                <div className="bar bar_width"></div>
-                <p className="p_normal">
-                  We made it more easier for you in order to provide you with
-                  the best service, our system has been optimisez to make sure
-                  we give you satisfactory visa service. Please select your
-                  option below and proceed.
-                </p>
 
-                <div>
-                  <div className="btn_card cta">
-                    <div className="btn_text ">Get my tourist UAE Visa</div>
-                    <div className="btn_ico">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M20.4025 14.3858C20.781 14.4142 21.0642 14.745 21.0358 15.1235L20.8616 17.4229C20.7177 19.3199 19.1167 20.8055 17.2151 20.8055H6.58423C4.68259 20.8055 3.08155 19.3199 2.93767 17.4229L2.76354 15.1235C2.73513 14.745 3.01923 14.4142 3.39773 14.3858C3.77805 14.372 4.10614 14.6405 4.13547 15.0199L4.30868 17.3184C4.39849 18.5025 5.39743 19.4308 6.58423 19.4308H17.2151C18.4019 19.4308 19.4017 18.5025 19.4906 17.3184L19.6647 15.0199C19.6941 14.6405 20.0304 14.3711 20.4025 14.3858ZM13.0821 2.71465C14.4594 2.71465 15.6005 3.74682 15.7724 5.0782L17.5773 5.079C19.4982 5.079 21.0599 6.64522 21.0599 8.5716V11.7233C21.0599 11.968 20.9297 12.1934 20.7199 12.3162C18.4578 13.6409 15.5922 14.4136 12.5868 14.5167L12.5872 16.165C12.5872 16.5445 12.2792 16.8524 11.8998 16.8524C11.5204 16.8524 11.2125 16.5445 11.2125 16.165L11.2119 14.5169C8.20954 14.4148 5.34377 13.6419 3.07999 12.3162C2.86921 12.1934 2.73999 11.968 2.73999 11.7233V8.56244C2.73999 6.64155 4.30621 5.079 6.23167 5.079L8.02728 5.0782C8.19915 3.74682 9.34024 2.71465 10.7176 2.71465H13.0821ZM17.5773 6.45368H6.23167C5.06411 6.45368 4.11467 7.39946 4.11467 8.56244V11.3228C6.29006 12.5048 9.03256 13.1526 11.8871 13.1539L11.8998 13.1527L11.91 13.153L12.3464 13.1485C15.0461 13.0842 17.6214 12.4437 19.6852 11.3228V8.5716C19.6852 7.40312 18.7403 6.45368 17.5773 6.45368ZM13.0821 4.08933H10.7176C10.1005 4.08933 9.57961 4.50931 9.42573 5.07843H14.3739C14.22 4.50931 13.6991 4.08933 13.0821 4.08933Z"
-                          fill="white"
-                          fillOpacity="0.6"
-                        />
-                      </svg>
-                    </div>
+      <nav className={`mobil_nav ${isActive ? "mobil_nav_active" : ""}`}>
+        <ul>
+          {navItems.map((item, index) => (
+            <li key={index}>
+              <span className={`link ${index === 0 ? "active" : ""}`}>
+                <span className="value" nbre={`0${index + 1}`}>{item}</span>
+                <span className="design">
+                  <div className="carret"></div>
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
 
-                    <div className="hoverlay"></div>
-                  </div>
-                  <div className="btn_card margin_btn">
-                    <div className="btn_text " text="black">
-                      Get my tourist UAE Visa
-                    </div>
-                    <div className="hoverlay"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="menu_social">
+          {/* <Boutons text="Apply now" isIcon={true}></Boutons> */}
+
+          <div className="social_link_container">
+            <span>
+              <img src={facebook} alt={facebook} />
+            </span>
+            <span>
+              <img src={twitter} alt={twitter} />
+            </span>
+            <span>
+              <img src={linkedin} alt={linkedin} />
+            </span>
           </div>
         </div>
-      </section>
+      </nav>
+
+
     </main>
   );
 };
