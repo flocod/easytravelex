@@ -33,16 +33,66 @@ const carousselImages = [
 
 const navItems = ["Home", "Visa", "Packages", "Tours", "Contacts us"];
 
-const HomePage = () => {
-  const [isActive, setIsActive] = useState(false);
+function MobileNav(props) {
+  return (
+    <nav
+      className={`mobil_nav ${props.menuIsActive ? "mobil_nav_active" : ""}`}
+    >
+      <ul>
+        {navItems.map((item, index) => (
+          <li key={index}>
+            <span className={`link ${index === 0 ? "active" : ""}`}>
+              <span className="value" nbre={`0${index + 1}`}>
+                {item}
+              </span>
+              <span className="design">
+                <div className="carret"></div>
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
 
-  const toggleClass = () => {
-    setIsActive(!isActive);
+      <div className="menu_social">
+        {/* <Boutons text="Apply now" isIcon={true}></Boutons> */}
+
+        <div className="social_link_container">
+          <span>
+            <img src={facebook} alt={facebook} />
+          </span>
+          <span>
+            <img src={twitter} alt={twitter} />
+          </span>
+          <span>
+            <img src={linkedin} alt={linkedin} />
+          </span>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function Header() {
+  const [menuIsActive, setmenuIsActive] = useState(false);
+  const handleMenu = () => {
+    setmenuIsActive(!menuIsActive);
   };
 
+  const window_Width = window.innerWidth;
+
+  window.onresize=()=>{
+    if( window.innerWidth > 1000){
+      setmenuIsActive(false);
+    }
+  }
+
   useEffect(() => {
+
+
     const handleLinkClick = (event) => {
       event.preventDefault();
+
+      console.log('handleLinkClick this',event.currentTarget);
 
       const links = document.querySelectorAll(".link");
       links.forEach((link) => link.classList.remove("active"));
@@ -53,6 +103,87 @@ const HomePage = () => {
 
     const links = document.querySelectorAll(".link");
     links.forEach((link) => link.addEventListener("click", handleLinkClick));
+
+
+    let ctx = gsap.context(() => {
+      // Create a new GSAP timeline
+      const handleDisplayMenu = gsap.timeline();
+
+      // Add animations to the timeline
+      handleDisplayMenu.from(".mobil_nav *:not(ul), .mobil_nav ul .link li", {
+        duration: 1,
+        delay: -0.2,
+        skewX:'-55deg',
+        
+        x: -500,
+        y: 500,
+        stagger: 0.02,
+      });
+
+     
+
+      if (menuIsActive) {
+        handleDisplayMenu.play();
+        console.log("play handleDisplayMenu");
+      } else {
+        handleDisplayMenu.reverse(1.3);
+        console.log("reverse handleDisplayMenu");
+      }
+    });
+
+
+
+
+    return () => {
+      ctx.revert();
+      links.forEach((link) =>
+      link.removeEventListener("click", handleLinkClick)
+    );
+    };
+  }, [menuIsActive]);
+
+  return (
+    <header className="modern_header">
+      {window_Width <= 1000 && <MobileNav menuIsActive={menuIsActive}></MobileNav>}
+      
+      <div className="struct_header">
+        <img className="logo" src={logo} alt="logo Easy Travelex" />
+
+        <div className="other">
+          <nav className="nav">
+            <ul>
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <span className={`link ${index === 0 ? "active" : ""}`}>
+                    <span className="value">{item}</span>
+                    <span className="design">
+                      <div className="carret"></div>
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="btn_marg">
+            <Boutons text="Apply visa" isIcon={1}></Boutons>
+          </div>
+
+          <div id="btn_menu" onClick={handleMenu} className="btn_menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+const HomePage = () => {
+  useEffect(() => {
+
 
     const imgElements = document.querySelectorAll(".img");
     let currentIndex = 0;
@@ -86,90 +217,158 @@ const HomePage = () => {
 
     let revelElms = gsap.utils.toArray(".revelElm");
     console.log({ revelElms });
-
+    const box = document.querySelector(".contain_card");
     revelElms.forEach((revelElm, index) => {
-
-      if(window.innerWidth >= 1001){
-        return new SplitType(revelElm, { types: "chars" });
-      }
-
-      
+      return new SplitType(revelElm, { types: "words" });
     });
 
     let ctx = gsap.context(() => {
+      // gsap.from(
+      //   ".text_carousel .intro h1 .word,.text_carousel .intro h4",
+      //   {
+      //     opacity: 0,
+      //     y: -150,
+      //     x:-50,
+      //     scaleY:0,
+
+      //     duration: 1,
+      //     skewX:'-50deg',
+      //     delay:0.03,
+      //     stagger: 0.2,
+      //     onComplete: function() {
+      //       revelElms.forEach((revelElm, index) => {
+      //         return SplitType.revert(revelElm);
+      //       });
+      //     }
+      //   }
+      // );
+      // gsap.from(
+      //   ".text_carousel p,.text_carousel .tags_destinations *,.text_carousel .intro_actions .btn,.text_carousel .intro_actions .btn_video_contain,.text_carousel .contain_card, .contain_card .bar,.text_carousel .contain_card  h4 .word",
+      //   {
+      //     opacity: 0,
+      //     y: 150,
+      //     duration: 1,
+      //     skewX:'5deg',
+      //     stagger: 0.07,
+      //     onComplete: function() {
+      //       revelElms.forEach((revelElm, index) => {
+      //         return SplitType.revert(revelElm);
+      //       });
+      //     }
+      //   }
+      // );
+
+      /////////////////////////// OU
+
+      // Créez une timeline pour l'animation
+      const boxHovertimeline = gsap.timeline({ paused: true });
+
+      // Ajoutez l'animation pour le survol
+      boxHovertimeline.to(".contain_card img:not(.imgTrouSVG)", {
+        duration: 0.5,
+        scale: 0,
+        translateX: "-50%",
+
+        stagger: 0.05,
+      });
+
       gsap.from(
-        ".text_carousel h4 .char,.text_carousel h4,.text_carousel h1 *,.text_carousel p,.text_carousel .tags_destinations *,.text_carousel .intro_actions .btn,.text_carousel .intro_actions .btn_video_contain,.text_carousel .contain_card, .contain_card .bar",
+        ".text_carousel h4 .word,.text_carousel h4,.text_carousel h1 .word,.text_carousel p,.text_carousel .tags_destinations *,.text_carousel .intro_actions .btn,.text_carousel .intro_actions .btn_video_contain,.text_carousel .contain_card, .contain_card .bar",
         {
           opacity: 0,
-          y: 100,
+          y: 150,
           duration: 1,
-          stagger: 0.03,
+          skewX: "5deg",
+          stagger: 0.07,
+          onComplete: function () {
+            // Ajoutez les événements de survol
+            box.addEventListener("mouseenter", () => {
+              boxHovertimeline.play(); // Lance l'animation lorsque la souris entre
+            });
+
+            box.addEventListener("mouseleave", () => {
+              boxHovertimeline.reverse(); // Fait revenir l'animation à l'état initial lorsque la souris quitte
+            });
+
+            revelElms.forEach((revelElm, index) => {
+              return SplitType.revert(revelElm);
+            });
+          },
         }
       );
-      gsap.from("header .other *:not(.btn *)", {
-        x: 100,
-        duration: 1,
-        stagger: 0.0,
+
+      //TTimeLine
+      // const carousTimeline = gsap.timeline();
+
+      // carousTimeline
+      //   .from(
+      //     ".text_carousel .intro h4, .text_carousel .intro h4 .word,.text_carousel .intro h1 .word, .text_carousel .intro p,.text_carousel .intro .tags_destinations *,.text_carousel .intro .intro_actions .btn,.text_carousel .intro .intro_actions .btn_video_contain",
+      //     {
+      //       opacity: 0,
+      //       y: 150,
+      //       duration: 1,
+      //       skewX: "5deg",
+      //       stagger: 0.07,
+      //     }
+      //   )
+      //   .from(
+      //     ".text_carousel .contain_card, .text_carousel .contain_card h4, .text_carousel .contain_card .btn_card,.text_carousel .contain_card .bar,.text_carousel ",
+      //     {
+      //       opacity: 0,
+      //       y: 150,
+      //       duration: 1,
+      //       stagger: 0.01,
+      //     },
+      //     "-=0.5"
+      //   )
+      //   .from(
+      //     ".text_carousel .contain_card img:not(.imgTrouSVG)",
+      //     {
+      //       scale: 0,
+      //       x: 100,
+      //       duration: 1,
+      //       stagger: 0.01,
+      //       onComplete: function () {
+      //         revelElms.forEach((revelElm, index) => {
+      //           return SplitType.revert(revelElm);
+      //         });
+      //       },
+      //     },
+      //     "-=0.5"
+      //   ); // "-=0.5" means the animation starts 0.5 seconds earlier
+
+      // // Play the timeline
+      // carousTimeline.play();
+
+      gsap.from("header .other nav li,header .other .btn_marg", {
+        x: "30vw",
+        duration: 1.8,
+        stagger: 0.1,
       });
       gsap.from("header .logo", {
         x: -100,
         duration: 1,
       });
-      gsap.from(".text_carousel img:not(.imgTrouSVG,.imgBagAfter)", {
-        y: 0,
-        x: 500,
-        duration: 1.5,
-        stagger: 0.5,
-        scale: 2,
+      gsap.from(".text_carousel .contain_card img:not(.imgTrouSVG)", {
+        x: -100,
+        delay: 2,
+        duration: 0.7,
+        stagger: 0.3,
+        scale: 0,
       });
     });
 
     return () => {
       clearInterval(interval);
-      links.forEach((link) =>
-        link.removeEventListener("click", handleLinkClick)
-      );
       ctx.revert();
+      box.removeEventListener("mouseenter",()=>{});
+      box.removeEventListener("mouseleave",()=>{});
     };
   }, []);
 
   return (
     <main className="page">
-      <header>
-        <div className="struct_header">
-          <img className="logo" src={logo} alt="logo Easy Travelex" />
-
-          <div className="other">
-            <nav className="nav">
-              <ul>
-                {navItems.map((item, index) => (
-                  <li key={index}>
-                    <span className={`link ${index === 0 ? "active" : ""}`}>
-                      <span className="value">{item}</span>
-                      <span className="design">
-                        <div className="carret"></div>
-                      </span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <div className="btn_marg">
-              <Boutons text="Apply visa" isIcon={1}></Boutons>
-            </div>
-
-            <div id="btn_menu" onClick={toggleClass} className="btn_menu">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-
+      <Header></Header>
 
       <section className="section caroussel">
         <div className="images">
@@ -333,40 +532,11 @@ const HomePage = () => {
         </div>
       </section>
 
-
-
-      <nav className={`mobil_nav ${isActive ? "mobil_nav_active" : ""}`}>
-        <ul>
-          {navItems.map((item, index) => (
-            <li key={index}>
-              <span className={`link ${index === 0 ? "active" : ""}`}>
-                <span className="value" nbre={`0${index + 1}`}>{item}</span>
-                <span className="design">
-                  <div className="carret"></div>
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="menu_social">
-          {/* <Boutons text="Apply now" isIcon={true}></Boutons> */}
-
-          <div className="social_link_container">
-            <span>
-              <img src={facebook} alt={facebook} />
-            </span>
-            <span>
-              <img src={twitter} alt={twitter} />
-            </span>
-            <span>
-              <img src={linkedin} alt={linkedin} />
-            </span>
-          </div>
+      <section className="section">
+        <div className="struct">
+          <h1>Bonjour</h1>
         </div>
-      </nav>
-
-
+      </section>
     </main>
   );
 };

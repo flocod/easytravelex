@@ -260,14 +260,14 @@ header {
             }
           }
 
-          &:hover {
-            transition: 0.3s;
+          // &:hover {
+          //   transition: 0.3s;
 
-            span {
-              width: 100%;
-              transition: 0.3s;
-            }
-          }
+          //   span {
+          //     width: 100%;
+          //     transition: 0.3s;
+          //   }
+          // }
         }
       }
     }
@@ -281,20 +281,33 @@ header {
   }
 }
 
+.modern_header {
+  top: 2vh;
+  width: var(--struct);
+  border-radius: 30px;
+  .struct_header {
+    width: 98.7%;
+    @media all and (max-width:1000px){
+      width:var(--struct);
+    }
+  }
+}
+
 .mobil_nav {
   place-items: center;
   position: fixed;
-  z-index: 90;
   top: 0;
   right: 0px;
   width: 100%;
   height: 100svh;
-  z-index: 90;
+  z-index: -1;
   background: var(--white);
-  transform: translateY(-100%);
-  transition: transform 0.5s ease,opacity .4s ease-out;
-  display: none;
+  transform: translateY(-120%);
+  transition: transform 1s ease, opacity 0.4s ease-out;
 
+  border-radius: 0px 0px 30px 30px;
+
+  display: none;
 
   @media all and (max-width: 1000px) {
     display: grid;
@@ -339,15 +352,14 @@ header {
           &::before {
             content: attr(nbre);
             color: var(--black);
-     
+
             position: absolute;
-            font-size: .3em;
+            font-size: 0.3em;
             right: 0px;
             top: 0%;
             transform: translateX(100%) translateY(-30%);
             transition: 0.3s ease;
           }
-
         }
       }
 
@@ -368,7 +380,6 @@ header {
           &::before {
             color: var(--cta);
           }
-
         }
       }
     }
@@ -406,7 +417,7 @@ header {
 
 .mobil_nav_active {
   transform: translateY(0%);
-  transition: transform 0.5s ease,opacity .4s ease-out;
+  transition: transform 0.7s ease, opacity 0.4s ease-out;
 }
 
 .btn {
@@ -512,22 +523,20 @@ header {
     position: absolute;
     left: 0;
     width: 85%;
-     transform: translateX(-50%);
-      top: -100%;
+    transform: translateX(-50%);
+    top: -100%;
 
-    @media all and (max-width: 1669px){
+    @media all and (max-width: 1669px) {
       transform: translateX(-50%) translateY(-50%);
       top: 0%;
       width: 100%;
     }
-    @media all and (max-width: 1000px){
+    @media all and (max-width: 1000px) {
       transform: translateX(-42%) translateY(-42%);
-
     }
-    @media all and (max-width: 600px){
-   width: 155vw;
+    @media all and (max-width: 600px) {
+      width: 155vw;
     }
-
   }
 
   .imgCircleArc {
@@ -537,7 +546,7 @@ header {
     top: calc(55% + 68.24px);
     width: 30%;
     transform: translateX(-70%) translateY(-60%) rotate(-4deg);
-    @media all and (max-width: 1000px){
+    @media all and (max-width: 1000px) {
       display: none;
     }
   }
@@ -575,14 +584,13 @@ header {
 
         p {
           text-align: center;
-          @media all and (max-width:600px){
+          @media all and (max-width: 600px) {
             font-size: 1.4em;
-            margin-top: .5em;
+            margin-top: 0.5em;
           }
 
-          @media all and (max-width:530px){
+          @media all and (max-width: 530px) {
             font-size: 1.2em;
-  
           }
         }
       }
@@ -594,7 +602,7 @@ header {
 
         @media all and (max-width: 1000px) {
           align-items: center;
-          justify-content:center;
+          justify-content: center;
           gap: 5px;
         }
 
@@ -651,7 +659,7 @@ header {
             background: rgba(255, 255, 255, 0.2);
             animation: fadeOut 2s ease infinite;
 
-            @media all and (max-width:600px){
+            @media all and (max-width: 600px) {
               width: 4.5rem;
               height: 4.5rem;
             }
@@ -664,7 +672,7 @@ header {
               height: 80%;
               border-radius: 50%;
               transition: all 0.3s ease;
-             
+
               .layer {
                 background: var(--red);
                 transition: all 0.3s ease;
@@ -672,8 +680,8 @@ header {
                   transform-origin: center;
                   transform: scale(1);
                   transition: transform 0.3s;
-                  @media all and (max-width:600px){
-                    transform: scale(.8);
+                  @media all and (max-width: 600px) {
+                    transform: scale(0.8);
                   }
                 }
               }
@@ -733,7 +741,7 @@ header {
     background: rgba(0, 0, 0, 0.507);
     border: 1px solid rgba(255, 255, 255, 0.4);
 
-    @media all and (max-width:600px){
+    @media all and (max-width: 600px) {
       bottom: 3%;
     }
 
@@ -748,6 +756,7 @@ header {
   display: block;
   width: 25vw;
   height: auto;
+  cursor: context-menu;
   @media all and (max-width: 1200px) {
     width: 31vw;
   }
