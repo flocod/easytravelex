@@ -1,3 +1,0 @@
-[build]
-publish = "build"  # Le dossier où se trouve la version construite de votre application
-command = "npm run build"  # La commande pour construire votre application
