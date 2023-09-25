@@ -1,10 +1,13 @@
-import './App.scss';
-import Routes from './routes';
+import "./App.scss";
+import "./";
+import Routes from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <Routes>
-    </Routes>
+    <BrowserRouter>
+      <Routes></Routes>
+    </BrowserRouter>
   );
 }
 

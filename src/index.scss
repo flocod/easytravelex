@@ -24,6 +24,7 @@
   --white: #FFF;
   --red: #C20F0F;
   --cta:#F6931C;
+  --yellow:#FF9800; 
   --cta2:#163D60;
   --ctaA:rgba(246, 148, 28, 20%);
   --black: #1B161C;
@@ -35,7 +36,7 @@
   --yellow-lite: #fef4be;
   --index: calc(1vw + 1vh);
 
-  --bgcolor: #f1f2ee;
+  --bgcolor: var(--white);
   --font: "Gilroy";
 
   --text-gray: #878c8e;
@@ -91,6 +92,7 @@
   outline: none;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  user-select: none;
 }
 
 *::-moz-selection {
@@ -186,6 +188,37 @@ body {
     margin-left: 3rem;
  
   }
+
+
+
+
+}
+
+// @media screen and (min-width: 1601px) {
+//   body {
+//     zoom: 108%;
+//   }
+// }
+
+
+.navlink {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 
@@ -244,3 +277,10 @@ height: 0.49988rem;
 border-radius: 30px;
 background: var(--cta);
 }
+
+.iti__flag {background-image: url("./images/intl-tel-input//flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: url("./images/intl-tel-input//flags@2x.png");}
+}
+
