@@ -116,7 +116,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <NavLink to={"/visasapplication/14%20Days%20%20visa%20+%20insurance%20to%20Dubai%20-%20UAE"} className="btn_marg">
+          <NavLink to={"/visas"} className="btn_marg">
             <Boutons text="Apply visa" isIcon={1}></Boutons>
           </NavLink>
 

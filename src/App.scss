@@ -1532,6 +1532,8 @@ header {
   .btn_mordern {
     margin-top: 2em;
     margin-bottom: 10px;
+    text-decoration: none;
+    color: inherit;
     @media all and (max-width: 1000px) {
       margin-top: 8%;
     }
@@ -2470,6 +2472,8 @@ header {
 
     .space_btn {
       margin-top: 3.12em;
+      text-decoration: none;
+      color: inherit;
       @media all and (max-width: 1000px) {
         margin-top: 1em;
       }
@@ -2596,7 +2600,7 @@ header {
               background: #f5f5f5;
               cursor: pointer;
               color: #1b161c;
-
+              text-decoration: none !important;
               font-family: var(--font2);
               font-size: 1.25em;
 
@@ -3106,7 +3110,7 @@ header {
         padding: 0;
 
         li {
-          color: #fff;
+          color: inherit;
           font-family: var(--font2);
           font-size: 1rem;
           font-style: normal;
@@ -3114,6 +3118,13 @@ header {
           line-height: normal;
           margin-bottom: 10px;
           opacity: 0.9;
+          text-decoration: none;
+
+          .menu_list_item{
+            text-decoration: none;
+            color: inherit;
+          }
+
           &:hover {
             color: var(--yellow);
             opacity: 1;
@@ -3952,6 +3963,21 @@ header {
                         opacity: 0;
                         transition: 0.5s;
                       }
+
+                      .doc_contain{
+                        display: grid;
+                        place-items: center;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        transition: 0.5s;
+                        opacity: 0;
+                        background: var(--white);
+                        font-family: var(--font1);
+                        font-size: .7em;
+
+                      }
+
                     }
 
                     .active {
@@ -4005,7 +4031,7 @@ header {
 
                     text-overflow: ellipsis;
                     font-family: var(--font1);
-                    font-size: 1em;
+                    font-size: 1.2em;
                     font-style: normal;
                     font-weight: 700;
                     line-height: 1.26044em;

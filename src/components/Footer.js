@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../images/logo.png";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
 
@@ -31,11 +32,11 @@ function Footer() {
             <div className="footer_item__title">Important links</div>
 
             <ul className="menu_list">
-              <li>- Contact</li>
-              <li>- Terms & Conditions</li>
-              <li>- Privacy policies</li>
-              <li>- Projects</li>
-              <li>- FAQ</li>
+              <li><NavLink className={"menu_list_item"} to={"/contacts"}>- Contact</NavLink></li>
+              <li><NavLink  className={"menu_list_item"}  to={"/#"}>- Terms & Conditions</NavLink></li>
+              <li><NavLink  className={"menu_list_item"}  to={"/#"}>- Privacy policies</NavLink></li>
+              <li><NavLink  className={"menu_list_item"}  to={"/#"}>- Projects</NavLink></li>
+              <li><NavLink  className={"menu_list_item"}  to={"/#"}>- FAQ</NavLink></li>
             </ul>
           </div>
 

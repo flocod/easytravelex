@@ -1,6 +1,6 @@
 import React from 'react';
 import imgContactUs from "../images/contactUs.png";
-
+import { NavLink } from 'react-router-dom';
 
 function ContactSection() {
     return (
@@ -59,7 +59,7 @@ function ContactSection() {
                         </div>
                       </div>
   
-                      <button className="btn_channel">Chat with us</button>
+                      <NavLink className="btn_channel" to={'https://wa.me/+971508291203'}>Chat with us</NavLink>
                     </div>
                   </div>
                   <div class="item item2">
@@ -107,7 +107,7 @@ function ContactSection() {
                         </div>
                       </div>
   
-                      <button className="btn_channel">Chat with us</button>
+                      <NavLink to={"tel:+971508291203"} className="btn_channel">Chat with us</NavLink>
                     </div>
                   </div>
                   <div class="item item3">
@@ -138,7 +138,7 @@ function ContactSection() {
                         </div>
                       </div>
   
-                      <button className="btn_channel">Chat with us</button>
+                      <NavLink to={"https://t.me/+971508291203"} className="btn_channel">Chat with us</NavLink>
                     </div>
                   </div>
                   <div class="item item4">
@@ -179,7 +179,7 @@ function ContactSection() {
                         </div>
                       </div>
   
-                      <button className="btn_channel">Video Call</button>
+                      <NavLink to={"callto:+971508291203"} className="btn_channel">Video Call</NavLink>
                     </div>
                   </div>
                 </div>

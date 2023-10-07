@@ -2,7 +2,7 @@ import React from 'react';
 import Boutons from './Boutons';
 import imgBtnDesign from "../images/svg/btnDesign.svg";
 import imgCircleAchievement from "../images/svg/circleachievement.svg";
-
+import { NavLink } from 'react-router-dom';
 
 function Achievements() {
     return (
@@ -30,9 +30,9 @@ function Achievements() {
                 help businesses thrive in the digital age.
               </p>
   
-              <div className="space_btn">
+              <NavLink to={"/contacts"} className="space_btn">
                 <Boutons text="Contact us" isNice={true} isIcon={true}></Boutons>
-              </div>
+              </NavLink>
             </div>
   
             <div className="container_achievement_card">

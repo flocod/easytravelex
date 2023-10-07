@@ -4,7 +4,7 @@ import caroussel2 from "../images/caroussels/caroussel2.webp";
 import caroussel3 from "../images/caroussels/caroussel3.webp";
 import caroussel4 from "../images/caroussels/caroussel4.webp";
 import caroussel5 from "../images/caroussels/caroussel5.webp";
-
+import { NavLink } from 'react-router-dom';
 
 function ExploreDubai() {
     return (
@@ -40,7 +40,7 @@ function ExploreDubai() {
                 </p>
               </div>
   
-              <div className="btn_mordern">
+              <NavLink className="btn_mordern" to={"/composetour"}>
                 <div className="left_bar"></div>
                 <div className="text">View more</div>
                 <svg
@@ -56,7 +56,7 @@ function ExploreDubai() {
                   />
                   <circle cx="3" cy="16" r="3" fill="#E08700" />
                 </svg>
-              </div>
+              </NavLink>
             </div>
           </div>
         </section>

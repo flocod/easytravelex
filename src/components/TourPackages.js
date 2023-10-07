@@ -3,6 +3,7 @@ import TourCard from "./TourCard";
 import caroussel4 from "../images/caroussels/caroussel4.webp";
 import caroussel2 from "../images/caroussels/caroussel2.webp";
 import caroussel3 from "../images/caroussels/caroussel3.webp";
+import { NavLink } from "react-router-dom";
 
 function TourPackages() {
   return (
@@ -19,7 +20,7 @@ function TourPackages() {
 
           <div className="header_title_shadow ">Our tours</div>
 
-          <div className="btn_mordern">
+          <NavLink className="btn_mordern" to={"/tours"}>
             <div className="left_bar"></div>
             <div className="text">View more</div>
             <svg
@@ -35,7 +36,7 @@ function TourPackages() {
               />
               <circle cx="3" cy="16" r="3" fill="#E08700" />
             </svg>
-          </div>
+          </NavLink>
         </div>
 
         <div className="visa_type_contain ">

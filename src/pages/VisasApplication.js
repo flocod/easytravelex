@@ -9,7 +9,13 @@ import imgIco from "../images/svg/imgico.svg";
 const VisasApplication = () => {
 
   let passportIMG_contain_pic_input = useRef();
+  let profileIMG_contain_pic_input = useRef();
+  let doc_contain_input = useRef();
+
   let passportIMG_previewImage = useRef();
+  let profileIMG_previewImage = useRef();
+  let doc_Namepreview = useRef();
+
   let passport_btn = useRef();
   let document_btn = useRef();
   let profile_btn = useRef();
@@ -35,6 +41,16 @@ const VisasApplication = () => {
     console.log(passportIMG_contain_pic_input.current)
   };
 
+  const handleClickProfile_btn = (e) => {
+    profileIMG_contain_pic_input.current.click();
+    console.log(profileIMG_contain_pic_input.current)
+  };
+
+  const handleClickDoc_btn = (e) => {
+    doc_contain_input.current.click();
+    console.log(doc_contain_input.current)
+  };
+
 
 
   useEffect(() => {
@@ -45,15 +61,32 @@ const VisasApplication = () => {
       nationality.value = itiNationality.getSelectedCountryData().name;
     };
 
-    const handleChangeInputFileImage =(evt)=>{
+    const handleChangeInputFileImage =(evt,selectorEl)=>{
       evt.stopPropagation();
-      let picImg = document.querySelector(".passportIMG_previewImage");
+      let picImg = document.querySelector(selectorEl);
       if (picImg) {
         let file = evt.target.files[0];
         if (file) {
           let src = URL.createObjectURL(file);
           picImg.src = src;
           picImg.classList.add("active");
+        }
+      }
+    }
+
+
+    const handleChangeInputFileDoc =(evt,selectorEl)=>{
+      console.log("evt,selectorEl",evt,selectorEl);
+      evt.stopPropagation();
+      const element = document.querySelector(selectorEl);
+      console.log("element----",element);
+      if (element) {
+        const file = evt.target.files[0];
+        if (file) {
+          const TempName = file.name;
+          console.log("TempName",TempName);
+          element.textContent = TempName;
+          element.classList.add("active");
         }
       }
     }
@@ -77,9 +110,27 @@ const VisasApplication = () => {
  
 
     let passportIMG_input= passportIMG_contain_pic_input.current;
+    const passportIMGSelector =  ".passportIMG_previewImage";
     passportIMG_input.addEventListener(
       "change",
-      handleChangeInputFileImage,
+    (e)=>{ handleChangeInputFileImage(e,passportIMGSelector)},
+      false
+    );
+    
+    let profileIMG_input= profileIMG_contain_pic_input.current;
+    const profileIMGSelector =  ".profileIMG_previewImage";
+    profileIMG_input.addEventListener(
+      "change",
+      (e)=>{ handleChangeInputFileImage(e,profileIMGSelector)},
+      false
+    );
+
+
+    let docContain_input= doc_contain_input.current;
+    const docContainNameSelector =  ".docContainName";
+    docContain_input.addEventListener(
+      "change",
+      (e)=>{ handleChangeInputFileDoc(e,docContainNameSelector)},
       false
     );
 
@@ -478,7 +529,7 @@ const VisasApplication = () => {
                           type="button"
                           ref={profile_btn}
                           className="document_face"
-                          onClick={(e)=>handleClickPassport_btn(e)}
+                          onClick={(e)=>handleClickProfile_btn(e)}
                         >
                           <div className="document_face__struct">
                             <img src={imgIco} alt={imgIco} />
@@ -489,8 +540,8 @@ const VisasApplication = () => {
                             </div>
 
                             <img
-                              ref={passportIMG_previewImage}
-                              className="passportIMG_previewImage previewImage"
+                              ref={profileIMG_previewImage}
+                              className="profileIMG_previewImage previewImage"
                               src=""
                               alt=""
                             />
@@ -500,7 +551,7 @@ const VisasApplication = () => {
                           type="button"
                           ref={document_btn}
                           className="document_face"
-                          onClick={(e)=>handleClickPassport_btn(e)}
+                          onClick={(e)=>handleClickDoc_btn(e)}
                         >
                           <div className="document_face__struct">
                             <img src={imgDocument} alt={imgDocument} />
@@ -510,16 +561,16 @@ const VisasApplication = () => {
                             Birth <br/>certificate
                             </div>
 
-                            <img
-                              ref={passportIMG_previewImage}
-                              className="passportIMG_previewImage previewImage"
-                              src=""
-                              alt=""
-                            />
+                            <div ref={doc_Namepreview} className="doc_contain docContainName">
+                                Pljl
+                            </div>
+
                           </div>
                         </button>
 
                           <input type="file" className="contain_pic_input" ref={passportIMG_contain_pic_input} />
+                          <input type="file" className="contain_pic_input" ref={profileIMG_contain_pic_input} />
+                          <input type="file" accept="pdf" className="contain_pic_input" ref={doc_contain_input} />
 
                       </div>
                     </div>
